@@ -15,8 +15,8 @@ const Index = () => {
     phoneNumber: "",
     email: "",
     registrationNumber: "",
-    courseName: "BSc Computer Science",
-    year: "Year 3",
+    courseName: "Diploma in Computer Programming",
+    year: "2023 Cohort",
     fullName: "",
     signatureImage: null as File | null
   });
@@ -77,8 +77,8 @@ const Index = () => {
         phoneNumber: "",
         email: "",
         registrationNumber: "",
-        courseName: "BSc Computer Science",
-        year: "Year 3",
+        courseName: "Diploma in Computer Programming",
+        year: "2023 Cohort",
         fullName: "",
         signatureImage: null
       });
@@ -100,8 +100,8 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Student Petition</h1>
-              <p className="text-gray-600 mt-1">Request for Internal Examinations</p>
+              <h1 className="text-3xl font-bold text-gray-900">Student Graduation Petition</h1>
+              <p className="text-gray-600 mt-1">Request for Graduation Based on Available Results</p>
             </div>
             <Button 
               variant="outline" 
@@ -123,7 +123,7 @@ const Index = () => {
               <CardHeader className="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-t-lg">
                 <CardTitle className="text-2xl">Sign the Petition</CardTitle>
                 <CardDescription className="text-blue-100">
-                  Help us advocate for internal examinations to better serve our academic needs
+                  Help us advocate for graduation based on our available examination results
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-8">
@@ -194,7 +194,7 @@ const Index = () => {
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="year" className="text-gray-700">Year</Label>
+                      <Label htmlFor="year" className="text-gray-700">Expected Graduation</Label>
                       <Input
                         id="year"
                         name="year"
@@ -279,19 +279,19 @@ const Index = () => {
                 <ul className="space-y-3 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    Better assessment of practical skills
+                    Allow graduation with available results
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    Reduced examination stress
+                    End academic stagnation since 2023
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    More flexible scheduling
+                    Enable career progression
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    Faculty-controlled quality assurance
+                    Provide needed recommendation letters
                   </li>
                 </ul>
               </CardContent>

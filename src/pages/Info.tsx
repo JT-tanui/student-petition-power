@@ -20,7 +20,7 @@ const Info = () => {
             </Button>
             <div>
               <h1 className="text-3xl font-bold text-gray-900">About This Petition</h1>
-              <p className="text-gray-600 mt-1">Understanding the need for internal examinations</p>
+              <p className="text-gray-600 mt-1">Understanding our graduation situation</p>
             </div>
           </div>
         </div>
@@ -33,80 +33,58 @@ const Info = () => {
             <CardHeader className="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-t-lg">
               <CardTitle className="text-2xl flex items-center gap-2">
                 <BookOpen className="w-6 h-6" />
-                Our Request
+                Our Situation
               </CardTitle>
               <CardDescription className="text-blue-100">
-                Why we're advocating for internal examinations
+                Why we need urgent action for graduation
               </CardDescription>
             </CardHeader>
             <CardContent className="p-8">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                We, the students of BSc Computer Science Year 3, respectfully request the implementation 
-                of internal examinations instead of external examinations for our academic assessments. 
-                This petition represents our collective voice in seeking a more effective and practical 
-                approach to academic evaluation.
+                We are students of the Diploma in Computer Programming who were scheduled to graduate 
+                in 2023. However, many of us are facing significant challenges with our results. Some 
+                students have missing marks, while others have lost internal examination results, 
+                causing our overall results to appear as failed despite having passed either internal 
+                or external examinations (or both).
               </p>
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
-                <p className="text-blue-800 font-medium">
-                  Internal examinations offer a more comprehensive and fair assessment of our practical 
-                  skills and theoretical knowledge, better preparing us for our professional careers.
+              <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-600">
+                <p className="text-red-800 font-medium">
+                  We have been academically stagnant since 2023 and desperately need recommendation 
+                  letters and graduation certificates to proceed with our studies and secure employment opportunities.
                 </p>
               </div>
             </CardContent>
           </Card>
 
-          {/* Benefits */}
+          {/* Our Request */}
           <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Target className="w-6 h-6 text-green-600" />
-                Benefits of Internal Examinations
+                Our Request
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-800">Academic Advantages</h3>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Better assessment of practical programming skills</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>More relevant questions tailored to course content</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Opportunity for immediate feedback and improvement</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Continuous assessment rather than one-time evaluation</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-800">Student Benefits</h3>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Reduced anxiety and stress levels</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Familiar environment for better performance</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Flexible scheduling options</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <span>Direct interaction with course instructors</span>
-                    </li>
-                  </ul>
-                </div>
+              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-600 mb-6">
+                <h3 className="text-xl font-semibold text-green-800 mb-4">We respectfully request that the administration:</h3>
+                <ul className="space-y-3 text-green-700">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Allow us to graduate if we have passed either internal OR external examinations (or both)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Provide graduation certificates based on available passing results</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Issue recommendation letters to enable further studies and employment</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>End the academic stagnation that has persisted since 2023</span>
+                  </li>
+                </ul>
               </div>
             </CardContent>
           </Card>
@@ -116,31 +94,94 @@ const Info = () => {
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <AlertCircle className="w-6 h-6 text-orange-600" />
-                Current Challenges with External Exams
+                Current Challenges We Face
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
               <div className="space-y-4">
                 <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-600">
-                  <h4 className="font-semibold text-orange-800 mb-2">Limited Practical Assessment</h4>
+                  <h4 className="font-semibold text-orange-800 mb-2">Missing Marks</h4>
                   <p className="text-orange-700">
-                    External exams often focus on theoretical knowledge without adequately testing 
-                    practical programming and problem-solving skills that are crucial in our field.
+                    Several students have missing marks in their academic records, preventing 
+                    accurate assessment of their overall performance and graduation eligibility.
                   </p>
                 </div>
                 <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-600">
-                  <h4 className="font-semibold text-red-800 mb-2">High Stress Environment</h4>
+                  <h4 className="font-semibold text-red-800 mb-2">Lost Internal Examination Results</h4>
                   <p className="text-red-700">
-                    The pressure of external examinations can negatively impact student performance 
-                    and doesn't reflect true academic capability or understanding.
+                    Some students' internal examination results have been lost, causing their 
+                    overall results to incorrectly show as failed despite having passed other components.
                   </p>
                 </div>
                 <div className="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-600">
-                  <h4 className="font-semibold text-yellow-800 mb-2">Generic Question Patterns</h4>
+                  <h4 className="font-semibold text-yellow-800 mb-2">Academic Stagnation Since 2023</h4>
                   <p className="text-yellow-700">
-                    External exam questions may not align perfectly with the specific curriculum 
-                    and teaching methods used in our course.
+                    We have been unable to progress academically or professionally due to the 
+                    delay in graduation, affecting our career prospects and further education opportunities.
                   </p>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
+                  <h4 className="font-semibold text-purple-800 mb-2">Lack of Essential Documents</h4>
+                  <p className="text-purple-700">
+                    Without graduation certificates and recommendation letters, we cannot apply 
+                    for jobs or continue our education, leaving us in professional limbo.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Impact on Students */}
+          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Users className="w-6 h-6 text-blue-600" />
+                Impact on Our Lives
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-800">Career Impact</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Unable to apply for programming jobs without certificates</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Missing opportunities in the tech industry</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Cannot demonstrate completed qualifications to employers</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Financial difficulties due to unemployment</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-800">Educational Impact</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Cannot pursue further studies or degrees</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Missing application deadlines for advanced programs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Unable to obtain recommendation letters</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Academic dreams put on indefinite hold</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </CardContent>
@@ -159,9 +200,10 @@ const Info = () => {
                 <div className="bg-gradient-to-r from-purple-100 to-blue-100 p-8 rounded-lg">
                   <h3 className="text-2xl font-bold text-gray-800 mb-4">Target: 200 Signatures</h3>
                   <p className="text-lg text-gray-700 mb-6">
-                    We aim to collect 200 student signatures to demonstrate strong support for 
-                    internal examinations. This will show the administration that this change 
-                    has significant backing from the student body.
+                    We aim to collect 200 student signatures to demonstrate that this graduation 
+                    delay issue affects a significant number of Diploma in Computer Programming 
+                    students. Our collective voice will show the administration the urgency of 
+                    resolving this matter.
                   </p>
                   <Button 
                     onClick={() => window.location.href = "/"}
@@ -187,9 +229,10 @@ const Info = () => {
               </p>
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600">
-                  <strong>Course:</strong> BSc Computer Science, Year 3<br />
+                  <strong>Course:</strong> Diploma in Computer Programming<br />
                   <strong>Department:</strong> DCPC<br />
-                  <strong>Academic Year:</strong> 2022
+                  <strong>Expected Graduation:</strong> 2023<br />
+                  <strong>Current Status:</strong> Results Processing Delays
                 </p>
               </div>
             </CardContent>
