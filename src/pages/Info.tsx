@@ -1,7 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, BookOpen, Users, Target, AlertCircle } from "lucide-react";
+import { ArrowLeft, BookOpen, Users, Target, AlertCircle, Shield, UserCheck } from "lucide-react";
 
 const Info = () => {
   return (
@@ -187,6 +186,143 @@ const Info = () => {
             </CardContent>
           </Card>
 
+          {/* Privacy & Data Protection */}
+          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <Shield className="w-6 h-6 text-blue-600" />
+                Privacy & Data Protection
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                  <h4 className="font-semibold text-blue-800 mb-3">How We Protect Your Information</h4>
+                  <ul className="space-y-2 text-blue-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Your personal information is only used for petition verification and submission</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>No data is shared with third parties without explicit consent</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Only authorized student representatives have access to the petition data</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>You can request removal of your signature at any time</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-600">
+                  <h4 className="font-semibold text-green-800 mb-3">Data Collection Purpose</h4>
+                  <p className="text-green-700 mb-3">We collect minimal information necessary to:</p>
+                  <ul className="space-y-2 text-green-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Verify that signers are genuine DCPC students</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Prevent duplicate or fraudulent signatures</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Provide contact information for petition updates (if email provided)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Submit a credible petition to school administration</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-600">
+                  <h4 className="font-semibold text-orange-800 mb-3">Your Rights</h4>
+                  <ul className="space-y-2 text-orange-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Right to know what data we collect and why</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Right to request removal of your signature and data</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Right to correct any inaccurate information</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Right to know who has access to your information</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Safety Guidelines */}
+          <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                <UserCheck className="w-6 h-6 text-purple-600" />
+                Safety & Authenticity Guidelines
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
+                  <h4 className="font-semibold text-purple-800 mb-3">For Signers - Ensure Your Safety</h4>
+                  <ul className="space-y-2 text-purple-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Only sign if you are a genuine DCPC student affected by this issue</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Never share your login credentials or allow others to sign on your behalf</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Verify the authenticity of this petition through your class representatives</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Contact organizers if you have concerns about data usage</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-600">
+                  <h4 className="font-semibold text-red-800 mb-3">What We DON'T Do</h4>
+                  <ul className="space-y-2 text-red-700">
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>We do not use any official school logos or branding without permission</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>We do not share petition data publicly or with unauthorized individuals</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>We do not accept signatures from non-DCPC students</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>We do not guarantee specific outcomes from the administration</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Our Goals */}
           <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
             <CardHeader>
@@ -216,24 +352,38 @@ const Info = () => {
             </CardContent>
           </Card>
 
-          {/* Contact Information */}
+          {/* Contact & Submission Information */}
           <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
             <CardHeader>
-              <CardTitle className="text-xl">Questions or Concerns?</CardTitle>
+              <CardTitle className="text-xl">Questions, Concerns, or Feedback?</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <p className="text-gray-700">
-                If you have any questions about this petition or would like to contribute 
-                to the cause in other ways, please contact the student representatives 
-                organizing this initiative.
-              </p>
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600">
-                  <strong>Course:</strong> Diploma in Computer Programming<br />
-                  <strong>Department:</strong> DCPC<br />
-                  <strong>Expected Graduation:</strong> 2023<br />
-                  <strong>Current Status:</strong> Results Processing Delays
+              <div className="space-y-4">
+                <p className="text-gray-700">
+                  If you have any questions about this petition, concerns about your privacy, 
+                  or would like to contribute to the cause in other ways, please contact 
+                  the student representatives organizing this initiative through your class representatives.
                 </p>
+                
+                <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-600">
+                  <h4 className="font-semibold text-green-800 mb-2">Submission Process</h4>
+                  <p className="text-green-700 text-sm">
+                    Once we reach our target, this petition will be formally submitted to the 
+                    school administration through proper channels, including student union 
+                    representatives and class coordinators, ensuring a respectful and 
+                    professional approach.
+                  </p>
+                </div>
+
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <p className="text-sm text-gray-600">
+                    <strong>Course:</strong> Diploma in Computer Programming<br />
+                    <strong>Department:</strong> DCPC<br />
+                    <strong>Expected Graduation:</strong> 2023<br />
+                    <strong>Current Status:</strong> Results Processing Delays<br />
+                    <strong>Petition Type:</strong> Student-organized, non-official
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
