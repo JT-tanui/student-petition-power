@@ -1,54 +1,45 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Download, Eye, LogOut, Users, FileText, TrendingUp } from "lucide-react";
+import { Download, Eye, LogOut, Users, FileText, TrendingUp, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Admin = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [signatures, setSignatures] = useState<any[]>([]);
   const { toast } = useToast();
 
-  // Mock data - in real app, this would come from backend
-  const mockSignatures = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john.doe@student.edu",
-      phone: "+1234567890",
-      regNumber: "DCPC01/3675/2022",
-      nationalId: "123456789",
-      signedAt: "2024-01-15 10:30 AM"
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane.smith@student.edu", 
-      phone: "+1234567891",
-      regNumber: "DCPC01/3676/2022",
-      nationalId: "123456790",
-      signedAt: "2024-01-15 11:45 AM"
-    },
-    {
-      id: 3,
-      name: "Mike Johnson",
-      email: "mike.j@student.edu",
-      phone: "+1234567892", 
-      regNumber: "DCPC01/3677/2022",
-      nationalId: "",
-      signedAt: "2024-01-15 02:15 PM"
+  useEffect(() => {
+    if (isLoggedIn) {
+      loadSignatures();
     }
-  ];
+  }, [isLoggedIn]);
 
-  const totalSignatures = mockSignatures.length;
+  const loadSignatures = () => {
+    const storedSignatures = JSON.parse(localStorage.getItem('petitionSignatures') || '[]');
+    setSignatures(storedSignatures);
+  };
+
+  const deleteSignature = (id: number) => {
+    const updatedSignatures = signatures.filter(sig => sig.id !== id);
+    setSignatures(updatedSignatures);
+    localStorage.setItem('petitionSignatures', JSON.stringify(updatedSignatures));
+    toast({
+      title: "Signature deleted",
+      description: "The signature has been removed from the petition",
+    });
+  };
+
+  const totalSignatures = signatures.length;
   const targetSignatures = 200;
-  const progressPercentage = (totalSignatures / targetSignatures) * 100;
+  const progressPercentage = Math.min((totalSignatures / targetSignatures) * 100, 100);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,15 +74,24 @@ const Admin = () => {
   };
 
   const downloadCSV = () => {
+    if (signatures.length === 0) {
+      toast({
+        title: "No data to export",
+        description: "There are no signatures to download",
+        variant: "destructive"
+      });
+      return;
+    }
+
     const csvContent = [
-      ["Name", "Email", "Phone", "Registration Number", "National ID", "Signed At"],
-      ...mockSignatures.map(sig => [
-        sig.name,
-        sig.email,
-        sig.phone,
-        sig.regNumber,
+      ["First Name", "Phone", "Email", "Registration Number", "National ID", "Signed At"],
+      ...signatures.map(sig => [
+        sig.fullName.split(' ')[0], // Only first name
+        sig.phoneNumber,
+        sig.email || "N/A",
+        sig.registrationNumber || "N/A",
         sig.nationalId || "N/A",
-        sig.signedAt
+        new Date(sig.timestamp).toLocaleString()
       ])
     ].map(row => row.join(",")).join("\n");
 
@@ -99,7 +99,7 @@ const Admin = () => {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "petition_signatures.csv";
+    a.download = `petition_signatures_${new Date().toISOString().split('T')[0]}.csv`;
     a.click();
     window.URL.revokeObjectURL(url);
 
@@ -110,10 +110,32 @@ const Admin = () => {
   };
 
   const downloadPDF = () => {
-    // In a real app, this would generate a proper PDF
+    // Create a simple text-based summary for PDF
+    const summary = `
+STUDENT GRADUATION PETITION SUMMARY
+Date: ${new Date().toLocaleDateString()}
+
+Total Signatures: ${totalSignatures}
+Target: ${targetSignatures}
+Progress: ${Math.round(progressPercentage)}%
+
+SIGNERS (First Names Only):
+${signatures.map((sig, index) => `${index + 1}. ${sig.fullName.split(' ')[0]}`).join('\n')}
+
+This petition requests the school administration to allow graduation for Diploma in Computer Programming students based on their available examination results (internal or external).
+    `;
+
+    const blob = new Blob([summary], { type: "text/plain" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `petition_summary_${new Date().toISOString().split('T')[0]}.txt`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+
     toast({
-      title: "PDF Generation",
-      description: "PDF summary is being generated and will download shortly",
+      title: "Summary Downloaded",
+      description: "Petition summary has been downloaded",
     });
   };
 
@@ -272,7 +294,7 @@ const Admin = () => {
                 className="border-blue-600 text-blue-600 hover:bg-blue-50"
               >
                 <Download className="w-4 h-4 mr-2" />
-                Download PDF Summary
+                Download Summary
               </Button>
             </div>
           </CardContent>
@@ -283,36 +305,54 @@ const Admin = () => {
           <CardHeader>
             <CardTitle>Petition Signatures</CardTitle>
             <CardDescription>
-              Complete list of all students who have signed the petition
+              Complete list of all students who have signed the petition (showing first names only for privacy)
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Phone</TableHead>
-                    <TableHead>Registration #</TableHead>
-                    <TableHead>National ID</TableHead>
-                    <TableHead>Signed At</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {mockSignatures.map((signature) => (
-                    <TableRow key={signature.id}>
-                      <TableCell className="font-medium">{signature.name}</TableCell>
-                      <TableCell>{signature.email}</TableCell>
-                      <TableCell>{signature.phone}</TableCell>
-                      <TableCell>{signature.regNumber}</TableCell>
-                      <TableCell>{signature.nationalId || "N/A"}</TableCell>
-                      <TableCell>{signature.signedAt}</TableCell>
+            {signatures.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">
+                <Users className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <p>No signatures yet. Share the petition to start collecting signatures!</p>
+              </div>
+            ) : (
+              <div className="rounded-md border">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>First Name</TableHead>
+                      <TableHead>Phone</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Registration #</TableHead>
+                      <TableHead>Signed At</TableHead>
+                      <TableHead>Actions</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
+                  </TableHeader>
+                  <TableBody>
+                    {signatures.map((signature) => (
+                      <TableRow key={signature.id}>
+                        <TableCell className="font-medium">
+                          {signature.fullName.split(' ')[0]}
+                        </TableCell>
+                        <TableCell>{signature.phoneNumber}</TableCell>
+                        <TableCell>{signature.email || "N/A"}</TableCell>
+                        <TableCell>{signature.registrationNumber || "N/A"}</TableCell>
+                        <TableCell>{new Date(signature.timestamp).toLocaleString()}</TableCell>
+                        <TableCell>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => deleteSignature(signature.id)}
+                            className="text-red-600 border-red-200 hover:bg-red-50"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>

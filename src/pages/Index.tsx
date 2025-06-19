@@ -1,10 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Users, FileText, TrendingUp, CheckCircle, Shield, AlertTriangle } from "lucide-react";
@@ -81,6 +79,18 @@ const Index = () => {
     }
 
     try {
+      // In a real app, this would save to backend/database
+      const signatureData = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        id: Date.now() // Simple ID generation
+      };
+      
+      // Store in localStorage for now (in production, this would be a database)
+      const existingSignatures = JSON.parse(localStorage.getItem('petitionSignatures') || '[]');
+      existingSignatures.push(signatureData);
+      localStorage.setItem('petitionSignatures', JSON.stringify(existingSignatures));
+      
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
@@ -123,14 +133,23 @@ const Index = () => {
               <h1 className="text-3xl font-bold text-gray-900">Student Graduation Petition</h1>
               <p className="text-gray-600 mt-1">Request for Graduation Based on Available Results</p>
             </div>
-            <Button 
-              variant="outline" 
-              onClick={() => window.location.href = "/info"}
-              className="hover:bg-blue-50"
-            >
-              <FileText className="w-4 h-4 mr-2" />
-              Learn More
-            </Button>
+            <div className="flex gap-2">
+              <Button 
+                variant="outline" 
+                onClick={() => window.location.href = "/?page=info"}
+                className="hover:bg-blue-50"
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Learn More
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => window.location.href = "/?page=admin"}
+                className="hover:bg-gray-50 text-sm"
+              >
+                Admin Access
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -225,9 +244,10 @@ const Index = () => {
                       name="registrationNumber"
                       value={formData.registrationNumber}
                       onChange={handleInputChange}
-                      placeholder="e.g., DCPC01/3675/2022"
+                      placeholder="Enter your registration number if you have it"
                       className="border-gray-300 focus:border-blue-500"
                     />
+                    <p className="text-xs text-gray-500">Example format: DCPC01/XXXX/2022</p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
@@ -400,7 +420,7 @@ const Index = () => {
               <CardContent className="p-4">
                 <Button 
                   variant="outline" 
-                  onClick={() => window.location.href = "/admin"}
+                  onClick={() => window.location.href = "/?page=admin"}
                   className="w-full border-gray-300 hover:bg-gray-50"
                 >
                   Admin Access
